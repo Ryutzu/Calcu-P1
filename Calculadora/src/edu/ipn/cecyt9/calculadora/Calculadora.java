@@ -53,7 +53,7 @@ public class Calculadora extends JFrame {
 	 */
 	public Calculadora() {
 		super();
-		setSize(250, 300);
+		setSize(300, 300);
 		setTitle("Calculadora Simple");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -90,7 +90,12 @@ public class Calculadora extends JFrame {
 		nuevoBotonOperacion("-");
 		nuevoBotonOperacion("*");
 		nuevoBotonOperacion("/");
-		nuevoBotonOperacion("=");
+                nuevoBotonOperacion("^");
+                nuevoBotonOperacion("^1/2");
+                nuevoBotonOperacion("Cos");
+                nuevoBotonOperacion("Sen");
+                nuevoBotonOperacion("Tan");
+                nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
 
 		panel.add("East", panelOperaciones);
@@ -192,6 +197,21 @@ public class Calculadora extends JFrame {
 			resultado /= new Double(pantalla.getText());
 		} else if (operacion.equals("*")) {
 			resultado *= new Double(pantalla.getText());
+		}else if (operacion.equals("^")) {
+                    //Calcula el resultado a la potencia seleccionada
+			resultado = Math.pow(resultado, new Double(pantalla.getText()));
+		}else if (operacion.equals("^1/2")) {
+                    //calcula la raiz cuadrada
+			resultado = Math.sqrt(new Double(pantalla.getText()));
+		}else if (operacion.equals("Cos")) {
+                    //calcula el coseno en grados
+			resultado = (Math.cos(Math.toRadians(new Double(pantalla.getText()))));
+		}else if (operacion.equals("Sen")) {
+                    //calcula el seno en grados
+			resultado = Math.sin(Math.toRadians(new Double(pantalla.getText())));
+		}else if (operacion.equals("Tan")) {
+                    //calcula la tangente en grados
+			resultado = Math.tan(Math.toRadians(new Double(pantalla.getText())));
 		}
 
 		pantalla.setText("" + resultado);
