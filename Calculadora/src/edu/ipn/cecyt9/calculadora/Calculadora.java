@@ -21,8 +21,9 @@ import javax.swing.border.EmptyBorder;
  * 
  * Interfaz para nuestra calculadora basica
  * 
- * @author:  emmanuel 
- * @version:  1.0 
+ * @author:  emmanuel
+ * @see Calculadora main
+ * @version:  1.1 
  * @date: 06-09-2015 
  */
 public class Calculadora extends JFrame {
