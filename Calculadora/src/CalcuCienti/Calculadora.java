@@ -1,5 +1,5 @@
 
-package edu.ipn.cecyt9.calculadora;
+package CalcuCienti;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,19 +21,15 @@ import javax.swing.border.EmptyBorder;
  * 
  * Interfaz para nuestra calculadora basica
  * 
- * @author:  emmanuel
- * @see Calculadora main
- * @version:  1.1 
- * @date: 06-09-2015 
+ * @author: Flores López Angel Raymundo & Corona Lucas Elimm
+ * @version:  1.20
+ * @date: 31-01-2018 
  */
 public class Calculadora extends JFrame {
 
-	/**
-	 * generado
-	 */
 	private static final long serialVersionUID = 1583724102189855698L;
 
-	/** numero tecleado */
+	/** numero en pantallita */
 	JTextField pantalla;
 
 	/** guarda el resultado de la operacion anterior o el número tecleado */
@@ -43,7 +39,7 @@ public class Calculadora extends JFrame {
 	/** para guardar la operacion a realizar */
 	String operacion;
 
-	/** Los paneles donde colocaremos los botones */
+	/** Los paneles de los botones */
 	JPanel panelNumeros, panelOperaciones;
 
 	/** Indica si estamos iniciando o no una operación */
@@ -68,7 +64,7 @@ public class Calculadora extends JFrame {
 		pantalla.setFont(new Font("Arial", Font.BOLD, 25));
 		pantalla.setHorizontalAlignment(JTextField.RIGHT);
 		pantalla.setEditable(false);
-		pantalla.setBackground(Color.WHITE);
+		pantalla.setBackground(Color.GRAY);
 		panel.add("North", pantalla);
 
 		panelNumeros = new JPanel();
@@ -134,7 +130,7 @@ public class Calculadora extends JFrame {
 	 */
 	private void nuevoBotonOperacion(String operacion) {
 		JButton btn = new JButton(operacion);
-		btn.setForeground(Color.RED);
+		btn.setForeground(Color.BLUE);
 
 		btn.addMouseListener(new MouseAdapter() {
 
