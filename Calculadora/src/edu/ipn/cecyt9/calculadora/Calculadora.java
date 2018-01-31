@@ -96,6 +96,7 @@ public class Calculadora extends JFrame {
                 nuevoBotonOperacion("Cos");
                 nuevoBotonOperacion("Sen");
                 nuevoBotonOperacion("Tan");
+                nuevoBotonOperacion("ln");
                 nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
 
@@ -172,7 +173,7 @@ public class Calculadora extends JFrame {
 			calcularResultado();
 		} else if (tecla.equals("CE")) {
 			resultado = 0;
-			pantalla.setText("");
+			pantalla.setText("0");
 			nuevaOperacion = true;
 		} else {
 			operacion = tecla;
@@ -190,32 +191,43 @@ public class Calculadora extends JFrame {
 	 * Calcula el resultado y lo muestra por pantalla
 	 */
 	private void calcularResultado() {
+                double res0 = new Double(pantalla.getText());
 		if (operacion.equals("+")) {
-			resultado += new Double(pantalla.getText());
+			resultado += res0;
 		} else if (operacion.equals("-")) {
-			resultado -= new Double(pantalla.getText());
+			resultado -= res0;
 		} else if (operacion.equals("/")) {
-			resultado /= new Double(pantalla.getText());
+                    if(res0!=0)
+			resultado /= res0;
+                    else
+                        pantalla.setText("Math error xP");
 		} else if (operacion.equals("*")) {
-			resultado *= new Double(pantalla.getText());
+			resultado *= res0;
 		}else if (operacion.equals("^")) {
                     //Calcula el resultado a la potencia seleccionada
-			resultado = Math.pow(resultado, new Double(pantalla.getText()));
+			resultado = Math.pow(resultado,res0);
 		}else if (operacion.equals("^1/2")) {
                     //calcula la raiz cuadrada
-			resultado = Math.sqrt(new Double(pantalla.getText()));
+			resultado = Math.sqrt(res0);
 		}else if (operacion.equals("Cos")) {
                     //calcula el coseno en grados
-			resultado = (Math.cos(Math.toRadians(new Double(pantalla.getText()))));
+			resultado = (Math.cos(Math.toRadians(res0)));
 		}else if (operacion.equals("Sen")) {
                     //calcula el seno en grados
-			resultado = Math.sin(Math.toRadians(new Double(pantalla.getText())));
+			resultado = Math.sin(Math.toRadians(res0));
 		}else if (operacion.equals("Tan")) {
                     //calcula la tangente en grados
-			resultado = Math.tan(Math.toRadians(new Double(pantalla.getText())));
+			resultado = Math.tan(Math.toRadians(res0));
+		}else if (operacion.equals("ln")) {
+                    //calcula el logaritmo natural
+                    if(res0>0)
+			resultado = Math.log(res0);
+                    else
+                        pantalla.setText("Math error xP");
 		}
-
+                if(!pantalla.getText().equals("Math error xP"))
 		pantalla.setText("" + resultado);
 		operacion = "";
+            
 	}
 }
